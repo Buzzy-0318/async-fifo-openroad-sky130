@@ -1,0 +1,15 @@
+read_verilog afifo.v
+
+hierarchy -check -top afifo
+
+synth -top afifo
+
+dfflibmap -liberty /opt/OpenROAD/src/sta/test/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+abc -liberty /opt/OpenROAD/src/sta/test/sky130hd/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+clean
+
+stat
+
+write_verilog afifo_synth.v
